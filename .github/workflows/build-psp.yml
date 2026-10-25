@@ -1,0 +1,19 @@
+
+name: Build MLBB Lite PSP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install PSPDEV
+        uses: pspdev/pspdev@v1
+        with:
+          command: sh
+          args: -c "psp-cmake -S . -B build && psp-cmake --build build"
+          
